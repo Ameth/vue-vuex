@@ -1,10 +1,14 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 import { RouterView, RouterLink } from "vue-router";
 import InputSearch from "@/components/InputSearch.vue";
 import ProfileCard from "@/components/ProfileCard.vue";
 import ChatItem from "@/components/ChatItem.vue";
-import store from "@/store/store.js";
+// import store from "@/store/store.js";
+import { mapState } from "vuex";
+import { useStore } from "vuex";
+
+const store = useStore();
 
 const search = ref("");
 const profile = reactive({
@@ -21,6 +25,9 @@ const channels = ref([
   { id: 5, name: "Non-work", messages: null },
   { id: 6, name: "Atención a clientes", messages: 120 },
 ]);
+
+const username = computed(() => store.state.username);
+console.log(store.state);
 </script>
 
 <template>
@@ -29,7 +36,7 @@ const channels = ref([
       <InputSearch v-model="search" />
       <ProfileCard
         :avatar="profile.avatar"
-        :username="store.username"
+        :username="username"
         :status="profile.status"
       />
       <RouterLink to="/" class="channels-title"
