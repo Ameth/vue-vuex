@@ -17,6 +17,11 @@ const store = createStore({
       return state.username.substring(0, cant);
     },
   },
+  mutations: {
+    updateUsername(state, newUsername) {
+      state.username = newUsername;
+    },
+  },
 });
 
 export default store;

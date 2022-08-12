@@ -36,7 +36,7 @@ const recortar = computed(() => store.getters.recortar);
       <InputSearch v-model="search" />
       <ProfileCard
         :avatar="profile.avatar"
-        :username="recortar(7)"
+        :username="username"
         :status="profile.status"
       />
       <RouterLink to="/" class="channels-title"

@@ -6,16 +6,22 @@
       <input
         type="text"
         placeholder="Jane Smith"
-        :value="store.username"
-        @input="store.updateUsername($event.target.value)"
+        :value="username"
+        @input="actualizar($event.target.value)"
       />
-      <button>Acceder</button>
+      <button @click="$router.push('/')">Acceder</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import store from "@/store/store.js";
+import { computed } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+
+const username = computed(() => store.state.username);
+
+const actualizar = (value) => store.commit("updateUsername", value);
 </script>
 
 <style lang="scss" scoped>
