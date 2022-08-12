@@ -27,7 +27,7 @@ const channels = ref([
 ]);
 
 const username = computed(() => store.state.username);
-console.log(store.state);
+const recortar = computed(() => store.getters.recortar);
 </script>
 
 <template>
@@ -36,7 +36,7 @@ console.log(store.state);
       <InputSearch v-model="search" />
       <ProfileCard
         :avatar="profile.avatar"
-        :username="username"
+        :username="recortar(7)"
         :status="profile.status"
       />
       <RouterLink to="/" class="channels-title"
