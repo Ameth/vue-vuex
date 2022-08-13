@@ -9,8 +9,14 @@
         :value="username"
         @input="actualizar($event.target.value)"
       />
+      <input
+        type="text"
+        placeholder="Admin"
+        :value="role"
+        @input="actualizarRole($event.target.value)"
+      />
       <button @click="$router.push('/')">Acceder</button>
-      <button @click="obtenerUser">Generar user</button>
+      <button @click="obtenerUser">Generar role</button>
     </div>
   </div>
 </template>
@@ -20,9 +26,11 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 
-const username = computed(() => store.state.username);
+const username = computed(() => store.state.profile.username);
+const role = computed(() => store.state.role);
 
-const actualizar = (value) => store.commit("updateUsername", value);
+const actualizar = (value) => store.dispatch("profile/updateIfAdmin", value);
+const actualizarRole = (value) => store.commit("updateRole", value);
 const obtenerUser = () => store.dispatch("obtenerUsername");
 </script>
 

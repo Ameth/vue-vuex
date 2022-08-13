@@ -1,42 +1,47 @@
 import { createStore } from "vuex";
 import { getUser } from "@/api";
+import { profile } from "./modules/profile";
 
 const store = createStore({
   state() {
     return {
-      username: "AmethGabriel",
+      role: "Admin",
+      status: "active",
     };
   },
   getters: {
     upperName(state) {
-      return state.username.toUpperCase();
+      return state.role.toUpperCase();
     },
     reversa(state) {
-      return state.username.split("").reverse().join("");
+      return state.role.split("").reverse().join("");
     },
     recortar: (state) => (cant) => {
-      return state.username.substring(0, cant);
+      return state.role.substring(0, cant);
     },
   },
   mutations: {
-    updateUsername(state, newUsername) {
-      state.username = newUsername;
+    updateRole(state, newRole) {
+      state.role = newRole;
     },
   },
   actions: {
     async obtenerUsername({ commit }) {
       const res = await fetch(`https://api.generadordni.es/v2/person/username`);
       const data = await res.json();
-      //Un numero aleatorio del 0 al 9
+      // Un numero aleatorio del 0 al 9
       const n = Math.floor(Math.random() * (9 - 0 + 1) + 0);
       //   console.log(data);
-      commit("updateUsername", data[n]);
+      commit("updateRole", data[n]);
     },
     async getUsername() {
       const user = await getUser(1);
       console.log(user);
       // commit("updateUsername", data[n]);
     },
+  },
+  modules: {
+    profile,
   },
 });
 

@@ -26,7 +26,9 @@ const channels = ref([
   { id: 6, name: "Atención a clientes", messages: 120 },
 ]);
 
-const username = computed(() => store.state.username);
+const username = computed(() => store.state.profile.username);
+const status = computed(() => store.state.status);
+const role = computed(() => store.state.role);
 const recortar = computed(() => store.getters.recortar);
 </script>
 
@@ -37,7 +39,7 @@ const recortar = computed(() => store.getters.recortar);
       <ProfileCard
         :avatar="profile.avatar"
         :username="username"
-        :status="profile.status"
+        :status="status"
       />
       <RouterLink to="/" class="channels-title"
         >Canales <Icon icon="carbon:hashtag"
