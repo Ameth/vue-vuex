@@ -10,6 +10,7 @@
         @input="actualizar($event.target.value)"
       />
       <button @click="$router.push('/')">Acceder</button>
+      <button @click="obtenerUser">Generar user</button>
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ const store = useStore();
 const username = computed(() => store.state.username);
 
 const actualizar = (value) => store.commit("updateUsername", value);
+const obtenerUser = () => store.dispatch("obtenerUsername");
 </script>
 
 <style lang="scss" scoped>
