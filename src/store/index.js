@@ -1,6 +1,9 @@
 import { createStore } from "vuex";
 import { getUser } from "@/api";
 import { profile } from "./modules/profile";
+import { channels } from "./modules/channels";
+import { messages } from "./modules/messages";
+import { contacts } from "./modules/contacts";
 
 const store = createStore({
   state() {
@@ -42,6 +45,9 @@ const store = createStore({
   },
   modules: {
     profile,
+    channels,
+    messages,
+    contacts,
   },
 });
 

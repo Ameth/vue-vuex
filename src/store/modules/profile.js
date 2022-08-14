@@ -2,7 +2,9 @@ export const profile = {
   namespaced: true,
   state() {
     return {
+      id: 1,
       username: "amethgabriel7",
+      avatar: "/avatars/avatar-02.jpg",
     };
   },
   getters: {

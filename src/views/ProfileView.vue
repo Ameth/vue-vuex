@@ -29,7 +29,7 @@ const store = useStore();
 const username = computed(() => store.state.profile.username);
 const role = computed(() => store.state.role);
 
-const actualizar = (value) => store.dispatch("profile/updateIfAdmin", value);
+const actualizar = (value) => store.commit("profile/updateUsername", value);
 const actualizarRole = (value) => store.commit("updateRole", value);
 const obtenerUser = () => store.dispatch("obtenerUsername");
 </script>
